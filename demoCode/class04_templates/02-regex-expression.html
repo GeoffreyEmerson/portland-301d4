@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Minimal jQuery Template with Regex</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
-
+  <!-- Looking a bit more like a template here with curly braces. -->
   <script id="hello" type="text/template">
     Hello {{0}}, my name is {{1}}, and I like {{2}}
   </script>
@@ -13,16 +13,20 @@
 <body>
   <div id="app"></div>
   <script>
+    // Start off by making a compile function that takes a template and array of strings as parameters
     var compile = function(template, expressions) {
+      // The compiler just does a string method, calling swapper on the matches
       return appTemplate.replace(/{{(\d+)}}/g, swapper);
-      // where
+      // swapper takes the found number from the string replace method
       function swapper(match, number) {
+        // ... and returns the string from the array at the index of the number.
         return expressions[number];
-      };
-    };
-    var appTemplate = $('#hello').html()
+      }; // end of swapper
+    }; // end of compile function
+    var appTemplate = $('#hello').html() // puts the text from the 'hello' script above into a variable
+    // run the compile function using that template variable and an array of strings
     var compiledTemplate = compile(appTemplate, ["Students", "Ivan", "Apples"]);
-    $('#app').append(compiledTemplate);
+    $('#app').append(compiledTemplate); // append the result to the live html
   </script>
 
 </body>
