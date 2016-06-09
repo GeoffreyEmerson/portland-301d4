@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Minimal jQuery Template with words</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
-
+  <!-- Looking a lot like a real template now! -->
   <script id="hello" type="text/template">
     Hello {{who}}, my name is {{name}}, and I like {{what}}
   </script>
@@ -13,21 +13,25 @@
 <body>
   <div id="app"></div>
   <script>
+    // Start by defining an object with data.
     var data = {
       who: "Students",
       name: "Ivan",
       what: "Apples"
     };
+    // But again we are creating a fairly simple function that takes a template string and data object.
     var compile = function(template, expressions) {
+      // Then just runs the string replace method on it.
       return appTemplate.replace(/{{([A-Za-z]+)}}/g, swapper);
-      // where
+      // With the same old swapper function helping out.
       function swapper(match, capture) {
+        // By returning the replacement text.
         return expressions[capture];
       };
     };
-    var appTemplate = $('#hello').html()
-    var compiledTemplate = compile(appTemplate, data);
-    $('#app').append(compiledTemplate);
+    var appTemplate = $('#hello').html() // Again saving the template string.
+    var compiledTemplate = compile(appTemplate, data); // Calling the compile function on the template and data.
+    $('#app').append(compiledTemplate); // And appending the result to the html.
   </script>
 
 </body>
