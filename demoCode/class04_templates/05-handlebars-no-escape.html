@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Handlebars Template</title>
   <link rel="stylesheet" type="text/css" href="style-for-05.css">
+  <!-- Now we're getting fancy! More than just a string, there's some HTML in this template! -->
   <script id="hello" type="text/x-handlebars-template">
     Hello {{who}}, my name is {{name}}, and I like {{what}}
     <p><br></p>
@@ -16,6 +17,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
   <script>
+    // Now the data object also contains some html!
     var data = {
       who: "Students",
       name: "Ivan",
@@ -23,11 +25,12 @@
       puppy_double: "Here is bold text: <b>I'm bold!</b><br>",
       puppy_triple: "Here is bold text: <b>I'm bold!</b><br>",
     };
-    var appTemplate = $('#hello').html()
-    var compiledTemplate = Handlebars.compile(appTemplate);
-    var html = compiledTemplate(data);
-    $('#app').append(html);
+    var appTemplate = $('#hello').html() // Our standard saving of the templace text.
+    var compiledTemplate = Handlebars.compile(appTemplate); // And compile the template as before.
+    var html = compiledTemplate(data); // What? There were no changes down here!
+    $('#app').append(html); // It must be the magic of templates!
   </script>
 
 </body>
 </html>
+<!-- Fin -->
