@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Handlebars Template</title>
+  <!-- Very similar to our last template string here. -->
   <script id="hello" type="text/x-handlebars-template">
     Hello {{who}}, my name is {{name}}, and I like {{what}}
   </script>
 </head>
 <body>
   <div id="app"></div>
+  <!-- Uh, oh. Things are getting serious! -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
+  <!-- What is this? It's a new library called Handlebars! -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.min.js" charset="utf-8"></script>
   <script>
+    // Again we define our data object.
     var data = {
       who: "Students",
       name: "Ivan",
       what: "Apples"
     };
-    var appTemplate = $('#hello').html()
-    var compiledTemplate = Handlebars.compile(appTemplate);
-    var html = compiledTemplate(data);
-    $('#app').append(html);
+    var appTemplate = $('#hello').html() // And again we save the string template.
+    var compiledTemplate = Handlebars.compile(appTemplate); // Now a real compiling call!
+    var html = compiledTemplate(data); // That's the stuff! Run the data through the compiled function.
+    $('#app').append(html); // And attach the result to the html as usual.
   </script>
 
 </body>
