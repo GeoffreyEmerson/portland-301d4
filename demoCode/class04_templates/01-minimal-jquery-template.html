@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <title>Minimal jQuery Template</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
-
+  <!-- Super simple proto-template will simply be appended to existing html -->
   <script id="hello" type="text/template">
     Hello world
   </script>
 </head>
 <body>
   <div id="app"></div>
-
+  <!-- The script here just grabs the contents of the hello script content above, and
+   appends it to the existing 'app' div. -->
   <script>
     $('#app').append($('#hello').html());
   </script>
